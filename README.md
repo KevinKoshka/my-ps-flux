@@ -16,3 +16,5 @@
 ### Tune Up
 1. In order to get the benefits of IDE automatic typechecking that Typescript offers, without actually using Typescript I installed **Document This** extension in **VS Code** to generate (somewhat)automatic [**JSDoc**](https://jsdoc.app/) documentation over our React code and **TSLint** extension for automatic linting that will pick up the JSDoc.
 2. Also for the sake of documenting the React development steps I added the **TODO Tree** extension with my own custom `FYI - (step)` tag.
+
+[**DOCU**](out/index.html)
