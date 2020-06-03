@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"todo-tree.tree.showScanModeButton": false,
+		"todo-tree.general.tags": [
+			"XXX",
+			"TODO",
+			"HACK",
+			"FIXME",
+			"BUG",
+			"FYI"
+		],
+		"todo-tree.highlights.customHighlight": {
+			"FYI": {
+				"background": "cyan",
+				"type": "text",
+				"foreground": "black"
+			}
+		}
+	}
+}
