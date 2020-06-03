@@ -13,8 +13,8 @@ import React from 'react';
 */
 
 /**
- * @function HomePage
- * @returns {JSX.Element}
+ * @description HomePage component.
+ * @typedef {function(): JSX.Element } HomePage
  */
 export function HomePage(){
     return (

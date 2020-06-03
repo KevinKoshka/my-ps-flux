@@ -1,6 +1,7 @@
 import React from 'react';
 
 /**
+ * @description AboutPage component.
  * @class AboutPage
  * @extends {React.Component}
  */

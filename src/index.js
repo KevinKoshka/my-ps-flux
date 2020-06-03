@@ -6,8 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { render } from 'react-dom';
 // Components
-import { HomePage } from './components/HomePage';
-import { AboutPage } from './components/AboutPage';
+import { App } from './components/App';
 
 /*
     FYI - 3
@@ -15,4 +14,4 @@ import { AboutPage } from './components/AboutPage';
     The render() takes two arguments: the first one is the component we will render (in JSX syntax), and
     the second one is the selector in which it's going to be appended.
 */
-render(<HomePage />, document.getElementById('root'));
+render(<App />, document.getElementById('root'));
