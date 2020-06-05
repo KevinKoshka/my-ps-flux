@@ -1,15 +1,35 @@
 import React from 'react';
 import { HomePage } from './HomePage';
 import { AboutPage } from './AboutPage';
+import { Header } from './Header';
+import { CoursesPage } from './CoursesPage';
 
 /**
  * @description Main app entry component.
- * @typedef {function(): AboutPage | HomePage} App
+ * @typedef {function(): JSX.Element} App
  */
 export function App() {
-    const location = window.location.href;
-    console.log(location);
-    return location === 'about' ?
-        (<AboutPage/>) :
-        (<HomePage/>);
+    const location = window.location.pathname;
+    /**
+     * @function
+     * @param {string} relURL
+     * @returns {AboutPage | HomePage}
+     */
+    function getPage(relURL) {
+        switch (relURL) {
+            case '/about':
+                return <AboutPage/>;
+            case '/courses':
+                return <CoursesPage/>;
+            default:
+                return <HomePage/>;
+        }
+    }
+
+    return (
+        <div className="container-fluid">
+            <Header/>
+            { getPage(location) }
+        </div>
+    );
 }

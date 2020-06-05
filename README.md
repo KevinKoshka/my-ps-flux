@@ -1,5 +1,5 @@
-## React Pluralsight Course
-### Setup
+# React Pluralsight Course
+## Setup
 1. Bootstrapped app with `npx create-react-app ps-flux` that installed everything I'll need. With that I can run `yarn start` to start the local web server. It also initiates a git repository. It uses `yarn`
 2. Ran `yarn add flux@3.1.3 react-router-dom@5.0.0 bootstrap@4.3.1`. Used those specific versions for course purposes.
 3. Deleted default content in `src/index.js` and imported **bootstrap** css file there with the help of webpack magic.
@@ -13,8 +13,37 @@
 6. Defined a new **start** script to start both the mock API and the client-side server.
 7. Copied **Chapter 3 after/** `api` folderinto `ps-flux/src`, which defines endpoints behaviour.
 8. In order to dynamically define API URL I added a custom `REACT_APP_API_URL` env. variable using cross-env.
-### Tune Up
+## Tune Up
 1. In order to get the benefits of IDE automatic typechecking that Typescript offers, without actually using Typescript I installed **Document This** extension in **VS Code** to generate (somewhat)automatic [**JSDoc**](https://jsdoc.app/) documentation over our React code and **TSLint** extension for automatic linting that will pick up the JSDoc.
 2. Also for the sake of documenting the React development steps I added the **TODO Tree** extension with my own custom `FYI - (step)` tag.
+----------------------------------
+## React Fundamentals
+### Props and State
+Data for React Components is stored both in **props** and **state**:
+   - **Props** allow data to be passed from a parent component to its children components. React enforces one way data flow. **Props** in the parent are used like HTML attributes, and in the children they are received as properties of the `props` parameter. `props` is immutable, and if a change in it needs to be triggered from the child, it would have to call a parent function which may update its internal state.
+   ```
+   // parent
+   <Avatar username="Cory"/>
+   ```
+   ```
+   // child
+   function Avatar(props) {
+      return <img src="images/" + props.username />;
+   }
+   ```
+   - **State** holds mutable data which is set with `setState()` in class components or you may use `useState` or `useReducer` hook in function components.
+### Lifecycle of Components
+Components lifecycle have three stages
+
+| Mounting                   | Updating                                       | Unmounting                 |
+| :------------------------: |:----------------------------------------------:| :-------------------------:|
+| constructor (classes only) | New **props** or **setState** or **forceUpdate()** |                        |
+| render                     | render                                         |                            |
+| React updates DOM and refs | React updates DOM and refs                     |                            |
+| **componentDidMount()**    | **componentDidUpdate()**                       | **componentWillUnmount()** |
+
+The first two steps while **Mounting** and **Unmounting** are the **Render Phases**, and they are run at the very beginning or when **props** or **state** change, or when it is forced to update. The render function usually returns JSX, but it may return other value types also; this function should be pure.
+
+`componentDidiMount()` function is called when the component exists in the DOM. `componentDidUpdate()` is called after every update flushed to the DOM, and `componentWillUnmount` right before beign removed from the DOM.
 
 [**DOCU**](out/index.html)
