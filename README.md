@@ -35,15 +35,52 @@ Data for React Components is stored both in **props** and **state**:
 ### Lifecycle of Components
 Components lifecycle have three stages
 
-| Mounting                   | Updating                                       | Unmounting                 |
-| :------------------------: |:----------------------------------------------:| :-------------------------:|
-| constructor (classes only) | New **props** or **setState** or **forceUpdate()** |                        |
-| render                     | render                                         |                            |
-| React updates DOM and refs | React updates DOM and refs                     |                            |
-| **componentDidMount()**    | **componentDidUpdate()**                       | **componentWillUnmount()** |
+| Mounting                   | Updating                                           | Unmounting                 |
+| :------------------------: |:--------------------------------------------------:| :-------------------------:|
+| constructor (classes only) | New **props** or **setState** or **forceUpdate()** |                            |
+| render                     | render                                             |                            |
+| React updates DOM and refs | React updates DOM and refs                         |                            |
+| **componentDidMount()**    | **componentDidUpdate()**                           | **componentWillUnmount()** |
 
 The first two steps while **Mounting** and **Unmounting** are the **Render Phases**, and they are run at the very beginning or when **props** or **state** change, or when it is forced to update. The render function usually returns JSX, but it may return other value types also; this function should be pure.
-
 `componentDidiMount()` function is called when the component exists in the DOM. `componentDidUpdate()` is called after every update flushed to the DOM, and `componentWillUnmount` right before beign removed from the DOM.
+
+### Hooks
+**Hooks** are functions that let you _Hook into_ React state and lifecycle features from function components. There are built-in **hooks** but users can also define their own.
+#### Effect Hook
+All the operations that may change components and therefore can't be done during rendering are called _side-effects_. The **Efect Hook** `useEffect` has the ability to perform effects form function components, and serve the same purpose as `componentDidMount`, `componentDidUpdate` and `componentWillUnmount`. the `useEffect` callback is ran after  flushing changes to the DOM.
+```
+function Example() {
+   const [count, setCount] = useState(0);
+
+   // Similar to componentDidMount and componentDidUpdate:
+   useEffect(() => {
+      // Update the document title using the browser API
+      document.title = `You clicked ${count} times`;
+   });
+
+   return (
+      <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+         Click me
+      </button>
+      </div>
+   );
+}
+```
+By returning a function within the `useEffect` callback you get the same functionality as in classes' `componentWillUnmount`.
+```
+useEffect(() => {
+   ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+   return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+   };
+});
+```
+#### Rules of Hooks
+- They can only be called at the top level of the component.
+- They can only be called from React components or other custom hooks.
+
 
 [**DOCU**](out/index.html)

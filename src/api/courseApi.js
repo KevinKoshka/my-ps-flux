@@ -1,6 +1,18 @@
 import { handleResponse, handleError } from "./apiUtils";
 const baseUrl = process.env.REACT_APP_API_URL + "/courses/";
 
+/**
+ * @typedef {Object} Course - ServerData course object
+ * @property {number} id
+ * @property {string} title
+ * @property {string} slug
+ * @property {number} authorId
+ * @property {string} category
+ */
+
+/**
+ * @returns {Promise<Course[]>}
+ */
 export function getCourses() {
   return fetch(baseUrl)
     .then(handleResponse)
