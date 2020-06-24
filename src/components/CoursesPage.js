@@ -51,9 +51,9 @@ export class CoursesPage extends React.Component {
     }
     render() {
         return (
-            <div>
+            <>
                 <h2>Courses</h2>
-                <table>
+                <table className="table">
                     <thead>
                         <th>Title</th>
                         <th>Author ID</th>
@@ -63,7 +63,7 @@ export class CoursesPage extends React.Component {
                         {this.renderCourses(this.state.courses)}
                     </tbody>
                 </table>
-            </div>
+            </>
         );
     }
 }
