@@ -6,7 +6,7 @@ import React from 'react';
 export function Header() {
     return (
         <nav>
-            <a href="/">Home</a> | <a href="/about">About</a> | <a href="/courses">Courses</a>
+            <a href="/">Home</a> | <a href="/about">About</a> | <a href="/courses">Courses</a> | <a href="/newCourses">New Courses</a>
         </nav>
     );
 }

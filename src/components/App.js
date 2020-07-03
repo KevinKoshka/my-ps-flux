@@ -3,6 +3,7 @@ import { HomePage } from './HomePage';
 import { AboutPage } from './AboutPage';
 import { Header } from './Header';
 import { CoursesPage } from './CoursesPage';
+import { NewCoursesPage } from './NewCoursesPage';
 
 /**
  * @description Main app entry component.
@@ -21,6 +22,8 @@ export function App() {
                 return <AboutPage/>;
             case '/courses':
                 return <CoursesPage/>;
+            case '/newCourses':
+                return <NewCoursesPage/>;
             default:
                 return <HomePage/>;
         }
