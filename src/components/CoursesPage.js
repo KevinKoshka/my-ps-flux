@@ -38,9 +38,16 @@ export class CoursesPage extends React.Component {
      */
     renderCourses(courses) {
         if (courses.length) {
+            /*
+                FYI - 7
+                We add a "key" attribute for every JSX element returned by the function iteration.
+                The attribute value must be a unique value (for the array), it can often be the primary key of the
+                model value. This attribute is useful for React to keep a reference of every element
+                and ensure consistent rendering.
+             */
             return courses.map(course => {
                 return (
-                    <tr>
+                    <tr key={course.id}>
                         <td>{course.title}</td>
                         <td>{course.authorId}</td>
                         <td>{course.category}</td>
@@ -55,9 +62,11 @@ export class CoursesPage extends React.Component {
                 <h2>Courses</h2>
                 <table className="table">
                     <thead>
-                        <th>Title</th>
-                        <th>Author ID</th>
-                        <th>Category</th>
+                        <tr>
+                            <th>Category</th>
+                            <th>Title</th>
+                            <th>Author ID</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {this.renderCourses(this.state.courses)}
