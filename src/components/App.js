@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { HomePage } from './HomePage';
 import { AboutPage } from './AboutPage';
 import { Header } from './Header';
@@ -10,29 +11,16 @@ import { NewCoursesPage } from './NewCoursesPage';
  * @typedef {function(): JSX.Element} App
  */
 export function App() {
-    const location = window.location.pathname;
-    /**
-     * @function
-     * @param {string} relURL
-     * @returns {AboutPage | HomePage}
-     */
-    function getPage(relURL) {
-        switch (relURL) {
-            case '/about':
-                return <AboutPage/>;
-            case '/courses':
-                return <CoursesPage/>;
-            case '/newCourses':
-                return <NewCoursesPage/>;
-            default:
-                return <HomePage/>;
-        }
-    }
 
     return (
         <div className="container-fluid">
             <Header/>
-            { getPage(location) }
+            <Switch>
+                <Route path="/about" component={ AboutPage } />
+                <Route path="/courses" component={ CoursesPage } />
+                <Route path="/newCourses" component={ NewCoursesPage } />
+                <Route path="/" exact component={ HomePage } />
+            </Switch>
         </div>
     );
 }

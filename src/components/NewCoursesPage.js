@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getCourses } from "../api/courseApi";
-
+/**
+ * @typedef {import('../api/courseApi').Course} Course
+ * @description NewCoursesPage component.
+ * @typedef {function(): JSX.Element } NewCoursesPage
+ */
 export function NewCoursesPage() {
     const [courses, setCourses] = useState([]);
 
@@ -17,7 +21,10 @@ export function NewCoursesPage() {
             setCourses(courseArray);
         })
     }, [])
-
+    /**
+     * @typedef { function(): JSX.Element } renderCourses
+     * @param {Course[]} courses
+     */
     function renderCourses(courses) {
         if (courses.length) {
             return courses.map(course => {

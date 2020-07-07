@@ -82,5 +82,64 @@ useEffect(() => {
 - They can only be called at the top level of the component.
 - They can only be called from React components or other custom hooks.
 
+### Controller Views
+They're components that has children components within, sets their props, and communicates with the store (if there was one).
+
+## React Router
+The package `"react-router-dom"` comes with three categories of components:
+- **routers**: `<BrowserRouter>` and `<HashRouter>`
+- **route matchers**: `<Route>` and `<Switch>`
+- **navigation**: `<Link>`, `<NavLink>` and `<Redirect>`
+
+### Routers
+- **BrowserRouter** uses regular URL paths and needs the webserver to always serve the same base URL, which may require extra server configuration.
+- **HashRouter** stores the location un the hash fragment of the URL which is never sent to the server.
+```
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
+```
+
+### Route Matchers
+**Switch** searches for its children **Route** components and chooses which one to display based on the URL.
+```
+function App() {
+  return (
+    <div>
+      <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/contact/:id">
+          <Contact />
+        </Route>
+        <Route path="/contact">
+          <AllContacts />
+        </Route>
+
+        {/* If none of the previous routes render anything,
+            this route acts as a fallback.
+
+            Important: A route with path="/" will *always* match
+            the URL because all URLs begin with a /. So that's
+            why we put this one last of all */}
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+```
+
+### Navigation
+- The **Link** component renders an `<a>` tag.
+- **NavLink** is like **Link** but it can style itself when the location matches.
+- **Redirect** when rendered redirects to the specified URL.
+
+
 
 [**DOCU**](out/index.html)
