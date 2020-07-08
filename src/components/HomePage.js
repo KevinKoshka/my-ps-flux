@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 /*
     FYI - 1
@@ -21,7 +22,7 @@ export function HomePage(){
         <div className="jumbotron">
             <h1>Pluralsight Administration</h1>
             <p>React, Flux, and React Router for ultra-responsive web apps.</p>
-            <a href="/about">About</a>
+            <NavLink to="about" className="btn btn-primary">About</NavLink>
         </div>
     );
 }

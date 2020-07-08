@@ -140,6 +140,12 @@ function App() {
 - **NavLink** is like **Link** but it can style itself when the location matches.
 - **Redirect** when rendered redirects to the specified URL.
 
+### Route props
+Whenever the **Route** component renders a component three props are passed to it:
+- `match`: an object that contains info about the URL path matched
+- `location`: an object similar to `history.location` but immutable so it can be used in lifecycle hooks to listen to navigation changes.
+- `history`: contains information about the navigation history and methods to traverse it or manipulate it.
+
 
 
 [**DOCU**](out/index.html)
